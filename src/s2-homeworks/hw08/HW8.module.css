@@ -1,22 +1,41 @@
 .item {
+    border-bottom: 1px solid rgba(229, 229, 229, 1);
 }
 
 .item:last-of-type {
 }
 
 .users {
+    margin-top: 20px;
+    width: 606px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-family: Roboto, sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
 }
 
 .buttonsContainer {
+    display: flex;
+    gap: 10px;
 }
 
 .container {
 }
 
 .thead {
+    width: 606px;
+    height: 36px;
+    background-color: rgba(229, 229, 229, 1);
+    font-family: Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
 }
 
 .nameCol {
+    width: 300px;
+    padding: 10px;
 }
 
 .ageCol {
