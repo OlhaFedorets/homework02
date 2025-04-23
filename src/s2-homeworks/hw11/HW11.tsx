@@ -37,8 +37,9 @@ function HW11() {
                             id={'hw11-single-slider'}
                             // сделать так чтоб value1 изменялось // пишет студент
                             value={value1}
-                            step={10}
                             onChange={change}
+                            size={'small'}
+                            sx={{width:'147px', height: '4px', color:'green'}}
                         />
                     </div>
                     <div className={s.wrapper}>
@@ -47,8 +48,9 @@ function HW11() {
                             id={'hw11-double-slider'}
                             // сделать так чтоб value1/2 изменялось // пишет студент
                             value={[value1, value2]}
-                            step={10}
                             onChange={change}
+                            size={'small'}
+                            sx={{width:'147px', height: '4px', color:'green'}}
                         />
                         <span id={'hw11-value-2'} className={s.number}>{value2}</span>
                     </div>
