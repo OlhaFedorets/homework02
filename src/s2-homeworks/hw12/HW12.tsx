@@ -44,7 +44,7 @@ const HW12 = () => {
                     className={s.select}
                     // сделать переключение тем
                     options={themes}
-                    onChangeOption={change}
+                    onChangeOption={(id)=>change(Number(id))}
                 />
             </div>
         </div>
