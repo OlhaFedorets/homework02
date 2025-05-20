@@ -1,7 +1,14 @@
 .buttonsContainer {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 30px;
 }
 
 .responseContainer {
+    display: flex;
+    justify-content: space-around;
+    gap: 50px;
+
 }
 
 .imageContainer {
@@ -11,9 +18,17 @@
 }
 
 .textContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .code {
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 100%;
+    margin-bottom: 15px;
 }
 
 .text {
