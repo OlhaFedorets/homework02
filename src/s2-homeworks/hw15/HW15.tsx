@@ -53,7 +53,33 @@ const HW15 = () => {
         getTechs(params)
             .then((res) => {
                 if (res && res.data) {
-                    setTechs(res.data.techs)
+                    let sortedTechs = [...res.data.techs]
+                    // if (sort === '0tech') {
+                    //     sortedTechs.sort((a, b) => b.tech.localeCompare(a.tech));
+                    // } else if (sort === '1tech') {
+                    //     sortedTechs.sort((a, b) => a.tech.localeCompare(b.tech));
+                    // } else if (sort === '0developer') {
+                    //     sortedTechs.sort((a, b) => b.developer.localeCompare(a.developer));
+                    // } else if (sort === '1developer') {
+                    //     sortedTechs.sort((a, b) => a.developer.localeCompare(b.developer));
+                    // }
+                    console.log(sort)
+
+                    const getComparator = (sort: string) => {
+                        if (sort === '0tech') return (a: TechType, b: TechType) => b.tech.localeCompare(a.tech);
+                        if (sort === '1tech') return (a: TechType, b: TechType) => a.tech.localeCompare(b.tech);
+                        if (sort === '0developer') return (a: TechType, b: TechType) => b.developer.localeCompare(a.developer);
+                        if (sort === '1developer') return (a: TechType, b: TechType) => a.developer.localeCompare(b.developer);
+                        return () => 0;
+                    };
+
+                    // sort === '1tech' ?
+                    //     sortedTechs = res.data.techs.sort(function (a,b) { return a.id > b.id ? 1 : -1})
+                    //     :  sort === '0tech' ? sortedTechs = res.data.techs.sort(function (a,b) { return a.tech > b.tech ? -1 : 1})
+                    //         : sortedTechs = res.data.techs
+
+
+                    setTechs(sortedTechs)
                     setTotalCount(res.data.totalCount)
                 }
                 // делает студент
@@ -82,14 +108,14 @@ const HW15 = () => {
 
     const onChangeSort = (newSort: string) => {
         // делает студент
-
         setSort(newSort)
         setPage(1)
         // setSort(
         // setPage(1) // при сортировке сбрасывать на 1 страницу
 
-        sendQuery({page, count})
-        setSearchParams()
+
+        setSearchParams({page: '1', count: count.toString(), sort: newSort})
+        sendQuery({page, count, sort: newSort})
         // sendQuery(
         // setSearchParams(
 
