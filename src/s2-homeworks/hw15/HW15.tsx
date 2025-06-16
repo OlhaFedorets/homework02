@@ -5,6 +5,7 @@ import axios from 'axios'
 import SuperPagination from './common/c9-SuperPagination/SuperPagination'
 import {useSearchParams} from 'react-router-dom'
 import SuperSort from './common/c10-SuperSort/SuperSort'
+import CircularProgress from "@mui/material/CircularProgress";
 
 /*
 * 1 - дописать SuperPagination
@@ -51,10 +52,14 @@ const HW15 = () => {
         setLoading(true)
         getTechs(params)
             .then((res) => {
+                if (res && res.data) {
+                    setTechs(res.data.techs)
+                    setTotalCount(res.data.totalCount)
+                }
                 // делает студент
 
                 // сохранить пришедшие данные
-
+                setLoading(false)
                 //
             })
     }
@@ -66,6 +71,9 @@ const HW15 = () => {
         // setPage(
         // setCount(
 
+        sendQuery({page:newPage, count: newCount})
+        setSearchParams()
+
         // sendQuery(
         // setSearchParams(
 
@@ -75,9 +83,13 @@ const HW15 = () => {
     const onChangeSort = (newSort: string) => {
         // делает студент
 
+        setSort(newSort)
+        setPage(1)
         // setSort(
         // setPage(1) // при сортировке сбрасывать на 1 страницу
 
+        sendQuery({page, count})
+        setSearchParams()
         // sendQuery(
         // setSearchParams(
 
@@ -108,7 +120,7 @@ const HW15 = () => {
             <div className={s2.hwTitle}>Homework #15</div>
 
             <div className={s2.hw}>
-                {idLoading && <div id={'hw15-loading'} className={s.loading}>Loading...</div>}
+                {idLoading && <div id={'hw15-loading'} className={s.loading}> <CircularProgress /></div>}
 
                 <SuperPagination
                     page={page}
@@ -119,12 +131,12 @@ const HW15 = () => {
 
                 <div className={s.rowHeader}>
                     <div className={s.techHeader}>
-                        tech
+                        Tech
                         <SuperSort sort={sort} value={'tech'} onChange={onChangeSort}/>
                     </div>
 
                     <div className={s.developerHeader}>
-                        developer
+                        Developer
                         <SuperSort sort={sort} value={'developer'} onChange={onChangeSort}/>
                     </div>
                 </div>

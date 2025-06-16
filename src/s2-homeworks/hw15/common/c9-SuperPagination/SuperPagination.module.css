@@ -1,5 +1,7 @@
 .pagination {
     display: flex;
+    gap: 10px;
+
 }
 
 .text1 {
@@ -9,3 +11,4 @@
 .text2 {
 
 }
+
